@@ -38,6 +38,7 @@ const montantPourcentage = montantTotal * pourcentage / 100;
 console.log("=== Calculateur de pourcentage ===");
 console.log(`${pourcentage}% de ${montantTotal} = ${montantPourcentage}`);
 
+
 /* Calculateur d'IMC */
 
 const poids = 70;
@@ -49,3 +50,9 @@ console.log("=== Calculateur d'IMC ===");
 console.log(`    Poids : ${poids} - Taille : ${taille}
     IMC : ${imc}
     Dans la plage normale (18.5 - 25) : ${imcPlageNormale}`);
+
+
+/* Mise à jour du compteur de fonction */
+
+nombreFonctions = nombreFonctions + 3;
+console.log(`Il y a ${nombreFonctions} outils disponibles dans la boîte à outils.`);
