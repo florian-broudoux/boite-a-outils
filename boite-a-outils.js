@@ -20,3 +20,11 @@ console.log(`
     |   ${nombreFonctions} fonctions disponibles
     |--------------------------------------------|
     `);
+
+
+/* Convertisseur de température (°C -> °F) */
+
+const temperatureCelsius = 25;
+const temperatureFahrenheit = temperatureCelsius * 9 / 5 + 32;
+console.log("=== Convertisseur de température ===");
+console.log(`${temperatureCelsius}°C = ${temperatureFahrenheit}°F`);
