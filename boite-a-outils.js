@@ -1,6 +1,22 @@
+/* CONFIGURATION */
+
+const NOM_OUTIL = "Ma boite à Outils Javascript";
+const VERSION = "1.0";
+const AUTEUR = "Florian";
+const ANNEE = "2026";
+
+/* Compteur de fonctions */
+
+let nombreFonctions = 0;
+
 /* Message de bienvenue */
 
-console.log("=== Ma Boîte à Outils JavaScript ===");
-console.log("===================================");
-console.log("Bienvenue ! Cette boîte à outils contient des fonctions utiles.");
-console.log("Ouvrez la console pour les utiliser.");
+console.log(`
+    |--------------------------------------------|
+    |    ${NOM_OUTIL} ${VERSION}
+    |   Par ${AUTEUR} - ${ANNEE}  
+    |--------------------------------------------|
+    |   Tapez aide pour voir les fonctions
+    |   ${nombreFonctions} fonctions disponibles
+    |--------------------------------------------|
+    `);
