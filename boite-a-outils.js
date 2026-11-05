@@ -37,3 +37,15 @@ const pourcentage = 20;
 const montantPourcentage = montantTotal * pourcentage / 100;
 console.log("=== Calculateur de pourcentage ===");
 console.log(`${pourcentage}% de ${montantTotal} = ${montantPourcentage}`);
+
+/* Calculateur d'IMC */
+
+const poids = 70;
+const taille = 1.75;
+const imc = poids / (taille * taille);
+const imcPlageNormale = imc >= 18.5 && imc <= 25;
+
+console.log("=== Calculateur d'IMC ===");
+console.log(`    Poids : ${poids} - Taille : ${taille}
+    IMC : ${imc}
+    Dans la plage normale (18.5 - 25) : ${imcPlageNormale}`);
