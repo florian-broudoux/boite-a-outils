@@ -28,3 +28,12 @@ const temperatureCelsius = 25;
 const temperatureFahrenheit = temperatureCelsius * 9 / 5 + 32;
 console.log("=== Convertisseur de température ===");
 console.log(`${temperatureCelsius}°C = ${temperatureFahrenheit}°F`);
+
+
+/* Calculateur de pourcentage */
+
+const montantTotal = 250;
+const pourcentage = 20;
+const montantPourcentage = montantTotal * pourcentage / 100;
+console.log("=== Calculateur de pourcentage ===");
+console.log(`${pourcentage}% de ${montantTotal} = ${montantPourcentage}`);
