@@ -7,7 +7,57 @@ const ANNEE = "2026";
 
 /* Compteur de fonctions */
 
-let nombreFonctions = 0;
+let nombreFonctions = 6;
+
+// FONCTIONS
+
+function convertirCelsiusEnFahreheit(celsius) {
+    return (celsius * 9) / 5 + 32;
+}
+
+function convertirFahrenheitEnCelsius(fahrenheit) {
+    return ((fahrenheit - 32) * 5) / 9;
+}
+
+function verifierParite(nombre) {
+    if (nombre % 2 === 0) {
+        return "pair";
+    } else {
+        return "impair";
+    }
+}
+
+function genererTableMultiplication(nombre) {
+    console.log(`=== Table de ${nombre} ===`);
+    for (let i = 1; i <= 10; i++) {
+        console.log(`${nombre} x ${i} = ${nombre * i}`);
+    }
+}
+
+function jouerFizzBuzz(limite) {
+    for (let i = 1; i <= limite; i++) {
+        if (i % 15 === 0) {
+            console.log("FizzBuzz");
+        } else if (i % 3 === 0) {
+            console.log("Fizz");
+        } else if (i % 5 === 0) {
+            console.log("Buzz");
+        } else {
+            console.log(i);
+        }
+    }
+}
+
+function aide() {
+    console.log(`=== ${NOM_OUTIL} v${VERSION} — ${nombreFonctions} fonctions ===`);
+    console.log("convertirCelsiusEnFahrenheit(celsius) → Convertit °C en °F");
+    console.log("convertirFahrenheitEnCelsius(fahrenheit) → Convertit °F en °C");
+    console.log("verifierParite(nombre) → Retourne 'pair' ou 'impair'");
+    console.log("genererTableMultiplication(nombre) → Affiche la table (1 à 10)");
+    console.log("jouerFizzBuzz(limite) → Joue à FizzBuzz de 1 à limite");
+    console.log("aide() → Affiche ce menu d'aide");
+}
+
 
 /* Message de bienvenue */
 
@@ -16,19 +66,20 @@ console.log(`
     |    ${NOM_OUTIL} ${VERSION}
     |   Par ${AUTEUR} - ${ANNEE}  
     |--------------------------------------------|
-    |   Tapez aide pour voir les fonctions
+    |   Tapez aide() pour voir les fonctions
     |   ${nombreFonctions} fonctions disponibles
     |--------------------------------------------|
     `);
 
-/* Convertisseur de température (°C -> °F) */
+/* ANCIEN CODE MASQUE 
+Convertisseur de température (°C -> °F)
 
 const temperatureCelsius = 25;
 const temperatureFahrenheit = (temperatureCelsius * 9) / 5 + 32;
 console.log("=== Convertisseur de température ===");
 console.log(`${temperatureCelsius}°C = ${temperatureFahrenheit}°F`);
 
-/* Calculateur de pourcentage */
+Calculateur de pourcentage 
 
 const montantTotal = 250;
 const pourcentage = 20;
@@ -36,8 +87,7 @@ const montantPourcentage = (montantTotal * pourcentage) / 100;
 console.log("=== Calculateur de pourcentage ===");
 console.log(`${pourcentage}% de ${montantTotal} = ${montantPourcentage}`);
 
-/* Calculateur d'IMC */
-
+ Calculateur d'IMC 
 const poids = 70;
 const taille = 1.75;
 const imc = poids / (taille * taille);
@@ -48,14 +98,14 @@ console.log(`    Poids : ${poids} - Taille : ${taille}
     IMC : ${imc}
     Dans la plage normale (18.5 - 25) : ${imcPlageNormale}`);
 
-/* Mise à jour du compteur de fonction */
+Mise à jour du compteur de fonction 
 
 nombreFonctions = nombreFonctions + 3;
 console.log(
     `Il y a ${nombreFonctions} outils disponibles dans la boîte à outils.`,
 );
 
-/* Vérifier si un nombre est pair ou impair */
+Vérifier si un nombre est pair ou impair
 
 const nombreAVerifier = 84;
 if (nombreAVerifier % 2 === 0) {
@@ -64,7 +114,7 @@ if (nombreAVerifier % 2 === 0) {
     console.log(`${nombreAVerifier} est un nombre impair`);
 }
 
-/* Catégoriser un age */
+Catégoriser un age 
 
 const agePersonne = 30;
 let categorieAge = "";
@@ -82,8 +132,7 @@ if (agePersonne < 0) {
 
 console.log(`Âge : ${agePersonne} ans - Catégorie: ${categorieAge}`);
 
-
-/* Vérifier la force d'un mot de passe */
+Vérifier la force d'un mot de passe 
 
 const motDePasse = "JeSuisUnMDP";
 let forceMotDePasse = "";
@@ -96,11 +145,12 @@ if (motDePasse.length < 6) {
     forceMotDePasse = "Fort";
 }
 
-console.log(`Mot de passe : "${"*".repeat(motDePasse.length)}" (${motDePasse.length} caractères)`);
+console.log(
+    `Mot de passe : "${"*".repeat(motDePasse.length)}" (${motDePasse.length} caractères)`,
+);
 console.log(`Force du mot de passe : ${forceMotDePasse}`);
 
-
-/* Table de multiplication */
+ Table de multiplication 
 
 const nombreTable = 9;
 console.log(`=== TABLE DE MULTIPLICATION DE ${nombreTable} ===`);
@@ -109,58 +159,57 @@ for (let i = 1; i <= 10; i++) {
 }
 console.log("=====================================");
 
-
-/* Compter les voyelles */
+ Compter les voyelles 
 
 const mot = "javascript";
-let voyelles = 0
+let voyelles = 0;
 for (let i = 0; i < mot.length; i++) {
     const lettre = mot[i];
-    if (lettre === "a" || lettre === "e" || lettre === "i" || lettre === "o" || lettre === "u") {
-    voyelles++;
-  }
+    if (
+        lettre === "a" ||
+        lettre === "e" ||
+        lettre === "i" ||
+        lettre === "o" ||
+        lettre === "u"
+    ) {
+        voyelles++;
+    }
 }
 console.log("=== COMPTEUR DE VOYELLES ===");
 console.log(`Mot : "${mot}"`);
 console.log(`Nombre de voyelles : ${voyelles}`);
 console.log("=============================");
 
-
-/* Motif d'étoiles */
+ Motif d'étoiles 
 
 console.log("=== MOTIF D'ÉTOILES ===");
 const hauteur = 5;
 for (let i = 1; i <= hauteur; i++) {
     let ligne = "";
-    for(let j = 1; j <= i; j++) {
+    for (let j = 1; j <= i; j++) {
         ligne = ligne + "*";
     }
     console.log(ligne);
 }
 console.log("========================");
 
-
-/* FizzBuzz (1 à 30) */
+FizzBuzz (1 à 30) 
 
 let n = 1;
 while (n <= 30) {
     if (n % 3 === 0 && n % 5 === 0) {
         console.log("FizzBuzz");
-    }
-    else if (n % 3 === 0) {
+    } else if (n % 3 === 0) {
         console.log("Fizz");
-    }
-    else if (n % 5 === 0) {
+    } else if (n % 5 === 0) {
         console.log("Buzz");
-    }
-    else {
+    } else {
         console.log(n);
     }
     n++;
 }
 
-
-/* Deviner un nombre */
+ Deviner un nombre 
 
 let nombreSecret = Math.floor(Math.random() * 50) + 1; // Numero au hasard entre 1 et 50
 let tentative = 0;
@@ -179,8 +228,7 @@ while (tentative !== nombreSecret) {
     }
 }
 
-
-/* Calculer une puissance sans ** */
+Calculer une puissance sans ** 
 
 // 2 puissance 10
 let base = 2;
@@ -207,3 +255,5 @@ while (compteur2 < exposant2) {
     console.log(`Etape ${compteur2} : ${base2}^${compteur2} = ${resultat2}`);
 }
 console.log(`Résultat final : ${base2}^${exposant2} = ${resultat2}`);
+
+FIN DU CODE MASQUE */
