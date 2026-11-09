@@ -7,7 +7,7 @@ const ANNEE = "2026";
 
 /* Compteur de fonctions */
 
-let nombreFonctions = 6;
+let nombreFonctions = 10;
 
 // FONCTIONS
 
@@ -48,6 +48,44 @@ function jouerFizzBuzz(limite) {
     }
 }
 
+function calculerMoyenne(notes) {
+    let somme = 0;
+    for (let i = 0; i < notes.length; i++) {
+        somme = somme + notes[i];
+    }
+    return somme / notes.length;
+}
+
+function trouverMaximum(nombres) {
+    let max = nombres[0];
+    for (let i = 1; i < nombres.length; i++) {
+        if (nombres[i] > max) {
+            max = nombres[i];
+        }
+    }
+    return max;
+}
+
+function trouverMinimum(nombres) {
+  let min = nombres[0];
+  for (let i = 1; i < nombres.length; i++) {
+    if (nombres[i] < min) {
+      min = nombres[i];
+    }
+  }
+  return min;
+}
+
+function filtrerNombresPairs(nombres) {
+  const pairs = [];  // Nouveau tableau vide
+  for (let i = 0; i < nombres.length; i++) {
+    if (nombres[i] % 2 === 0) {  // Si le nombre est pair
+      pairs.push(nombres[i]);    // On l'ajoute au tableau des pairs
+    }
+  }
+  return pairs;
+}
+
 function aide() {
     console.log(`=== ${NOM_OUTIL} v${VERSION} — ${nombreFonctions} fonctions ===`);
     console.log("convertirCelsiusEnFahrenheit(celsius) → Convertit °C en °F");
@@ -56,6 +94,10 @@ function aide() {
     console.log("genererTableMultiplication(nombre) → Affiche la table (1 à 10)");
     console.log("jouerFizzBuzz(limite) → Joue à FizzBuzz de 1 à limite");
     console.log("aide() → Affiche ce menu d'aide");
+    console.log("calculerMoyenne(notes) → Calcule la moyenne d'un tableau de notes");
+    console.log("trouverMaximum(nombres) → Trouve le plus grand nombre d'un tableau");
+    console.log("trouverMinimum(nombres) → Trouve le plus petit nombre d'un tableau");
+    console.log("filtrerNombresPairs(nombres) → Filtre un tableau pour ne garder que les nombres pairs");
 }
 
 
@@ -77,11 +119,18 @@ function calculerMoyenne (a, b, c) {
 return (a + b + c) / 3;
 }
 
-
+function genererSalutation(prenom, heure) {
+    if (heure >= 6 && heure < 12) { return `Bonjour ${prenom} !`; }
+    else if (heure >= 12 && heure < 18) { return `Bon après-midi ${prenom} !`; }
+    else if (heure >= 18 && heure < 22) { return `Bonsoir ${prenom} !`; }
+    return `Bonne nuit ${prenom} !`;
+}
 
 
 
 ANCIEN CODE MASQUE FICHE 3 A 6
+
+
 Convertisseur de température (°C -> °F)
 
 const temperatureCelsius = 25;
