@@ -138,3 +138,72 @@ for (let i = 1; i <= hauteur; i++) {
     console.log(ligne);
 }
 console.log("========================");
+
+
+/* FizzBuzz (1 à 30) */
+
+let n = 1;
+while (n <= 30) {
+    if (n % 3 === 0 && n % 5 === 0) {
+        console.log("FizzBuzz");
+    }
+    else if (n % 3 === 0) {
+        console.log("Fizz");
+    }
+    else if (n % 5 === 0) {
+        console.log("Buzz");
+    }
+    else {
+        console.log(n);
+    }
+    n++;
+}
+
+
+/* Deviner un nombre */
+
+let nombreSecret = Math.floor(Math.random() * 50) + 1; // Numero au hasard entre 1 et 50
+let tentative = 0;
+let essais = 0;
+
+while (tentative !== nombreSecret) {
+    tentative = Number(prompt("Devinez le nombre (entre 1 et 50) :"));
+    essais++;
+
+    if (tentative < nombreSecret) {
+        console.log(`${tentative} → Trop bas !`);
+    } else if (tentative > nombreSecret) {
+        console.log(`${tentative} → Trop haut !`);
+    } else {
+        console.log(`${tentative} → Bravo ! Trouvé en ${essais} essai(s) !`);
+    }
+}
+
+
+/* Calculer une puissance sans ** */
+
+// 2 puissance 10
+let base = 2;
+let exposant = 10;
+let resultat = 1;
+let compteur = 0;
+
+while (compteur < exposant) {
+    resultat = resultat * base;
+    compteur++;
+    console.log(`Etape ${compteur} : ${base}^${compteur} = ${resultat}`);
+}
+console.log(`Résultat final : ${base}^${exposant} = ${resultat}`);
+
+// 3 puissance 5
+let base2 = 3;
+let exposant2 = 5;
+let resultat2 = 1;
+let compteur2 = 0;
+
+while (compteur2 < exposant2) {
+    resultat2 = resultat2 * base2;
+    compteur2++;
+    console.log(`Etape ${compteur2} : ${base2}^${compteur2} = ${resultat2}`);
+}
+console.log(`Résultat final : ${base2}^${exposant2} = ${resultat2}`);
