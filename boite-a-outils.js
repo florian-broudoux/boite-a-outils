@@ -98,3 +98,43 @@ if (motDePasse.length < 6) {
 
 console.log(`Mot de passe : "${"*".repeat(motDePasse.length)}" (${motDePasse.length} caractères)`);
 console.log(`Force du mot de passe : ${forceMotDePasse}`);
+
+
+/* Table de multiplication */
+
+const nombreTable = 9;
+console.log(`=== TABLE DE MULTIPLICATION DE ${nombreTable} ===`);
+for (let i = 1; i <= 10; i++) {
+    console.log(`${nombreTable} x ${i} = ${nombreTable * i}`);
+}
+console.log("=====================================");
+
+
+/* Compter les voyelles */
+
+const mot = "javascript";
+let voyelles = 0
+for (let i = 0; i < mot.length; i++) {
+    const lettre = mot[i];
+    if (lettre === "a" || lettre === "e" || lettre === "i" || lettre === "o" || lettre === "u") {
+    voyelles++;
+  }
+}
+console.log("=== COMPTEUR DE VOYELLES ===");
+console.log(`Mot : "${mot}"`);
+console.log(`Nombre de voyelles : ${voyelles}`);
+console.log("=============================");
+
+
+/* Motif d'étoiles */
+
+console.log("=== MOTIF D'ÉTOILES ===");
+const hauteur = 5;
+for (let i = 1; i <= hauteur; i++) {
+    let ligne = "";
+    for(let j = 1; j <= i; j++) {
+        ligne = ligne + "*";
+    }
+    console.log(ligne);
+}
+console.log("========================");
