@@ -71,7 +71,17 @@ console.log(`
     |--------------------------------------------|
     `);
 
-/* ANCIEN CODE MASQUE 
+/* Fiche 7 exo 4
+
+function calculerMoyenne (a, b, c) {
+return (a + b + c) / 3;
+}
+
+
+
+
+
+ANCIEN CODE MASQUE FICHE 3 A 6
 Convertisseur de température (°C -> °F)
 
 const temperatureCelsius = 25;
