@@ -86,6 +86,35 @@ function filtrerNombresPairs(nombres) {
   return pairs;
 }
 
+function creerContact(nom, email, telephone) {
+    const contact = {
+        nom: nom,
+        email: email,
+        telephone: telephone,
+        dateCreation: "2026"
+    };
+    return contact;
+}
+
+function afficherContact(contact) {
+    for (let cle in contact) {
+        console.log(`${cle} : ${contact[cle]}`);
+    }
+}
+
+function fusionnerObjets(obj1, obj2) {
+    const resultat = {};
+
+    for (let cle in obj1) {
+        resultat[cle] = obj1[cle];
+    }
+
+    for (let cle in obj2) {
+        resultat[cle] = obj2[cle];
+    }
+    return resultat;
+}
+
 function aide() {
     console.log(`=== ${NOM_OUTIL} v${VERSION} — ${nombreFonctions} fonctions ===`);
     console.log("convertirCelsiusEnFahrenheit(celsius) → Convertit °C en °F");
