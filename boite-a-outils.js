@@ -122,11 +122,14 @@ function aide() {
     console.log("verifierParite(nombre) → Retourne 'pair' ou 'impair'");
     console.log("genererTableMultiplication(nombre) → Affiche la table (1 à 10)");
     console.log("jouerFizzBuzz(limite) → Joue à FizzBuzz de 1 à limite");
-    console.log("aide() → Affiche ce menu d'aide");
     console.log("calculerMoyenne(notes) → Calcule la moyenne d'un tableau de notes");
     console.log("trouverMaximum(nombres) → Trouve le plus grand nombre d'un tableau");
     console.log("trouverMinimum(nombres) → Trouve le plus petit nombre d'un tableau");
     console.log("filtrerNombresPairs(nombres) → Filtre un tableau pour ne garder que les nombres pairs");
+    console.log("creerContact(nom, email, telephone) → Crée et retourne un objet contact");
+    console.log("afficherContact(contact) → Affiche les propriétés d'un contact");
+    console.log("fusionnerObjets(obj1, obj2) → Crée et retourne un objet contact");
+    console.log("aide() → Affiche ce menu d'aide");
 }
 
 
