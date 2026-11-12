@@ -7,7 +7,7 @@ const ANNEE = "2026";
 
 /* Compteur de fonctions */
 
-let nombreFonctions = 10;
+let nombreFonctions = 13;
 
 // FONCTIONS
 
@@ -128,7 +128,7 @@ function aide() {
     console.log("filtrerNombresPairs(nombres) → Filtre un tableau pour ne garder que les nombres pairs");
     console.log("creerContact(nom, email, telephone) → Crée et retourne un objet contact");
     console.log("afficherContact(contact) → Affiche les propriétés d'un contact");
-    console.log("fusionnerObjets(obj1, obj2) → Crée et retourne un objet contact");
+    console.log("fusionnerObjets(obj1, obj2) → Fusionne deux objets en un seul");
     console.log("aide() → Affiche ce menu d'aide");
 }
 
