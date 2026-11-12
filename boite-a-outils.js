@@ -115,6 +115,25 @@ function fusionnerObjets(obj1, obj2) {
     return resultat;
 }
 
+function convertirNote(note) {
+    switch (true) {
+        case (note < 0 || note > 20) :
+        return "La note doit être comprise entre 0 et 20";
+        case (note >= 16) :
+        return "A - Excellent";
+        case (note >= 14) :
+        return "B - Très bien";
+        case (note >= 12) :
+        return "C - Bien";
+        case (note >= 10) :
+        return "D - Passable";
+        case (note >= 0) :
+        return "F - Insuffisant";
+        default :
+        return "La note doit être comprise entre 0 et 20";
+    }
+}
+
 function aide() {
     console.log(`=== ${NOM_OUTIL} v${VERSION} — ${nombreFonctions} fonctions ===`);
     console.log("convertirCelsiusEnFahrenheit(celsius) → Convertit °C en °F");
