@@ -10,15 +10,23 @@ const ANNEE = "2026";
 let nombreFonctions = 15;
 
 // FONCTIONS
-
-function convertirCelsiusEnFahreheit(celsius) {
+/* V1
+function convertirCelsiusEnFahrenheit(celsius) {
     return (celsius * 9) / 5 + 32;
 }
+*/
 
+const convertirCelsiusEnFahrenheit = celsius => celsius * 9/5 + 32;
+
+/* V1
 function convertirFahrenheitEnCelsius(fahrenheit) {
     return ((fahrenheit - 32) * 5) / 9;
 }
+*/
 
+const convertirFahrenheitEnCelsius = fahrenheit => (fahrenheit - 32) * 5/9; 
+
+/* V1
 function verifierParite(nombre) {
     if (nombre % 2 === 0) {
         return "pair";
@@ -26,6 +34,8 @@ function verifierParite(nombre) {
         return "impair";
     }
 }
+*/
+const estPair = n => n % 2 === 0;
 
 function genererTableMultiplication(nombre) {
     console.log(`=== Table de ${nombre} ===`);
@@ -186,6 +196,18 @@ function lancerMenu() {
     } while (choix !== 0);
 }
 
+const valeurAbsolue = n => n < 0 ? -n : n;
+
+const estNegatif = n => n < 0;
+
+const carre = n => n * n;
+
+const cube = n => n * n * n;
+
+const pourcentage = (partie, total) => (partie / total) * 100;
+
+const initialiser = prenom => prenom[0].toUpperCase();
+
 function aide() {
     console.log(
         `=== ${NOM_OUTIL} v${VERSION} — ${nombreFonctions} fonctions ===`,
@@ -194,7 +216,7 @@ function aide() {
     console.log(
         "convertirFahrenheitEnCelsius(fahrenheit) → Convertit °F en °C",
     );
-    console.log("verifierParite(nombre) → Retourne 'pair' ou 'impair'");
+    console.log("estPair(n) → Retourne 'true' ou 'false'");
     console.log(
         "genererTableMultiplication(nombre) → Affiche la table (1 à 10)",
     );
@@ -226,6 +248,12 @@ function aide() {
     console.log(
         "lancerMenu() → Lance un menu interactif pour tester des fonctions",
     );
+    console.log("valeurAbsolue(n) → Calcule la valeur absolue d'un nombre");
+    console.log("estNegatif(n) → Teste si un nombre est négatif");
+    console.log("carre(n) → Calcule le carré d'un nombre");
+    console.log("cube(n) → Calcule le cube d'un nombre");
+    console.log("pourcentage(partie, total) → Calcule un pourcentage");
+    console.log("initialiser(prenom) → Renvoie la première lettre en majuscule");
     console.log("aide() → Affiche ce menu d'aide");
 }
 
