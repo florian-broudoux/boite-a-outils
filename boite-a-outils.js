@@ -7,7 +7,7 @@ const ANNEE = "2026";
 
 /* Compteur de fonctions */
 
-let nombreFonctions = 13;
+let nombreFonctions = 15;
 
 // FONCTIONS
 
@@ -67,23 +67,24 @@ function trouverMaximum(nombres) {
 }
 
 function trouverMinimum(nombres) {
-  let min = nombres[0];
-  for (let i = 1; i < nombres.length; i++) {
-    if (nombres[i] < min) {
-      min = nombres[i];
+    let min = nombres[0];
+    for (let i = 1; i < nombres.length; i++) {
+        if (nombres[i] < min) {
+            min = nombres[i];
+        }
     }
-  }
-  return min;
+    return min;
 }
 
 function filtrerNombresPairs(nombres) {
-  const pairs = [];  // Nouveau tableau vide
-  for (let i = 0; i < nombres.length; i++) {
-    if (nombres[i] % 2 === 0) {  // Si le nombre est pair
-      pairs.push(nombres[i]);    // On l'ajoute au tableau des pairs
+    const pairs = []; // Nouveau tableau vide
+    for (let i = 0; i < nombres.length; i++) {
+        if (nombres[i] % 2 === 0) {
+            // Si le nombre est pair
+            pairs.push(nombres[i]); // On l'ajoute au tableau des pairs
+        }
     }
-  }
-  return pairs;
+    return pairs;
 }
 
 function creerContact(nom, email, telephone) {
@@ -91,7 +92,7 @@ function creerContact(nom, email, telephone) {
         nom: nom,
         email: email,
         telephone: telephone,
-        dateCreation: "2026"
+        dateCreation: "2026",
     };
     return contact;
 }
@@ -117,40 +118,116 @@ function fusionnerObjets(obj1, obj2) {
 
 function convertirNote(note) {
     switch (true) {
-        case (note < 0 || note > 20) :
-        return "La note doit être comprise entre 0 et 20";
-        case (note >= 16) :
-        return "A - Excellent";
-        case (note >= 14) :
-        return "B - Très bien";
-        case (note >= 12) :
-        return "C - Bien";
-        case (note >= 10) :
-        return "D - Passable";
-        case (note >= 0) :
-        return "F - Insuffisant";
-        default :
-        return "La note doit être comprise entre 0 et 20";
+        case note < 0 || note > 20:
+            return "La note doit être comprise entre 0 et 20";
+        case note >= 16:
+            return "A - Excellent";
+        case note >= 14:
+            return "B - Très bien";
+        case note >= 12:
+            return "C - Bien";
+        case note >= 10:
+            return "D - Passable";
+        case note >= 0:
+            return "F - Insuffisant";
+        default:
+            return "La note doit être comprise entre 0 et 20";
     }
 }
 
-function aide() {
-    console.log(`=== ${NOM_OUTIL} v${VERSION} — ${nombreFonctions} fonctions ===`);
-    console.log("convertirCelsiusEnFahrenheit(celsius) → Convertit °C en °F");
-    console.log("convertirFahrenheitEnCelsius(fahrenheit) → Convertit °F en °C");
-    console.log("verifierParite(nombre) → Retourne 'pair' ou 'impair'");
-    console.log("genererTableMultiplication(nombre) → Affiche la table (1 à 10)");
-    console.log("jouerFizzBuzz(limite) → Joue à FizzBuzz de 1 à limite");
-    console.log("calculerMoyenne(notes) → Calcule la moyenne d'un tableau de notes");
-    console.log("trouverMaximum(nombres) → Trouve le plus grand nombre d'un tableau");
-    console.log("trouverMinimum(nombres) → Trouve le plus petit nombre d'un tableau");
-    console.log("filtrerNombresPairs(nombres) → Filtre un tableau pour ne garder que les nombres pairs");
-    console.log("creerContact(nom, email, telephone) → Crée et retourne un objet contact");
-    console.log("afficherContact(contact) → Affiche les propriétés d'un contact");
-    console.log("fusionnerObjets(obj1, obj2) → Fusionne deux objets en un seul");
-    console.log("aide() → Affiche ce menu d'aide");
+function lancerMenu() {
+    let choix;
+
+    do {
+        console.log("=== MA BOITE A OUTILS v2 ===");
+        console.log("1. Calculer une moyenne");
+        console.log("2. Trouver le maximum d'un tableau");
+        console.log("3. Trouver le minimum d'un tableau");
+        console.log("4. Convertir une note en appreciation");
+        console.log("5. Tester si un nombre est pair");
+        console.log("0. Quitter");
+        console.log("============================");
+
+        choix = Number(prompt("Le numéro de votre choix ?"));
+
+        switch (choix) {
+            case 1:
+                const notes = [15, 10, 12, 18, 14];
+                console.log(
+                    `Moyenne de [${notes}] : ${calculerMoyenne(notes)}`,
+                );
+                break;
+            case 2:
+                const nombres2 = [5, 9, 4, 1, 8];
+                console.log(
+                    `Maximum de [${nombres2}] : ${trouverMaximum(nombres2)}`,
+                );
+                break;
+            case 3:
+                const nombres3 = [5, 9, 4, 1, 8];
+                console.log(
+                    `Minimum de [${nombres3}] : ${trouverMinimum(nombres3)}`,
+                );
+                break;
+            case 4:
+                const note = Number(prompt("Entrez une note (0-20) :"));
+                console.log(`Note ${note} → ${convertirNote(note)}`);
+                break;
+            case 5:
+                const nb = Number(prompt("Entrez un nombre :"));
+                console.log(`${nb} est pair ? ${verifierParite(nb)}`);
+                break;
+            case 0:
+                console.log("Au revoir !");
+                break;
+            default:
+                console.log("Choix invalide, veuillez reessayer.");
+        }
+    } while (choix !== 0);
 }
 
+function aide() {
+    console.log(
+        `=== ${NOM_OUTIL} v${VERSION} — ${nombreFonctions} fonctions ===`,
+    );
+    console.log("convertirCelsiusEnFahrenheit(celsius) → Convertit °C en °F");
+    console.log(
+        "convertirFahrenheitEnCelsius(fahrenheit) → Convertit °F en °C",
+    );
+    console.log("verifierParite(nombre) → Retourne 'pair' ou 'impair'");
+    console.log(
+        "genererTableMultiplication(nombre) → Affiche la table (1 à 10)",
+    );
+    console.log("jouerFizzBuzz(limite) → Joue à FizzBuzz de 1 à limite");
+    console.log(
+        "calculerMoyenne(notes) → Calcule la moyenne d'un tableau de notes",
+    );
+    console.log(
+        "trouverMaximum(nombres) → Trouve le plus grand nombre d'un tableau",
+    );
+    console.log(
+        "trouverMinimum(nombres) → Trouve le plus petit nombre d'un tableau",
+    );
+    console.log(
+        "filtrerNombresPairs(nombres) → Filtre un tableau pour ne garder que les nombres pairs",
+    );
+    console.log(
+        "creerContact(nom, email, telephone) → Crée et retourne un objet contact",
+    );
+    console.log(
+        "afficherContact(contact) → Affiche les propriétés d'un contact",
+    );
+    console.log(
+        "fusionnerObjets(obj1, obj2) → Fusionne deux objets en un seul",
+    );
+    console.log(
+        "convertirNote(note) → Convertit la note en appréciation lettre",
+    );
+    console.log(
+        "lancerMenu() → Lance un menu interactif pour tester des fonctions",
+    );
+    console.log("aide() → Affiche ce menu d'aide");
+}
 
 /* Message de bienvenue */
 
