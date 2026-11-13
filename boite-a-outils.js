@@ -7,7 +7,7 @@ const ANNEE = "2026";
 
 /* Compteur de fonctions */
 
-let nombreFonctions = 28;
+let nombreFonctions = 34;
 
 // FONCTIONS
 /* V1
@@ -210,7 +210,7 @@ function lancerMenu() {
                 break;
             case 5:
                 const nb = Number(prompt("Entrez un nombre :"));
-                console.log(`${nb} est pair ? ${verifierParite(nb)}`);
+                console.log(`${nb} est pair ? ${estPair(nb)}`);
                 break;
             case 0:
                 console.log("Au revoir !");
@@ -304,6 +304,27 @@ const filtrerParCritere = (personnes, ageMinimum) =>
 const nomsDesMajeurs = (personnes) =>
     personnes.filter((p) => p.age >= 18).map((p) => p.prenom);
 
+const trouverParNom = (tableau, nom) => tableau.find((e) => e.nom === nom);
+
+const trouverIndex = (tableau, valeur) =>
+    tableau.findIndex((element) => element === valeur);
+
+const contientNegatif = (tableau) => tableau.some((n) => n < 0);
+
+const tousPositifs = (tableau) => tableau.every((n) => n > 0);
+
+const tousComplets = (contact) =>
+    contact.every((c) => c.nom !== "" && c.email !== "" && c.telephone !== "");
+
+const trierNombres = (tableau, ordre) => {
+    const copie = [...tableau];
+    if (ordre === "croissant") {
+        return copie.sort((a, b) => a - b);
+    } else {
+        return copie.sort((a, b) => b - a);
+    }
+};
+
 function aide() {
     console.log(
         `=== ${NOM_OUTIL} v${VERSION} — ${nombreFonctions} fonctions ===`,
@@ -368,6 +389,24 @@ function aide() {
         "filtrerParCritere(personnes, ageMinimum) → Filtre selon l'âge minimum",
     );
     console.log("nomsDesMajeurs(personnes) → Récupère les prénoms des majeurs");
+    console.log(
+        "trouverParNom(tableau, nom) → Recherche et retourne le premier élément correspondant au nom",
+    );
+    console.log(
+        "trouverIndex(tableau, valeur) → Recherche et retourne l'index de la valeur dans le tableau",
+    );
+    console.log(
+        "contientNegatif(tableau) → Vérifie si au moins un nombre est négatif",
+    );
+    console.log(
+        "tousPositifs(tableau) → Vérifie si tous les nombres sont strictement positifs",
+    );
+    console.log(
+        "tousComplets(contacts) → Vérifie si tous les contacts possèdent un nom, un email et un téléphone",
+    );
+    console.log(
+        "trierNombres(tableau, ordre) → Trie les nombres par ordre croissant ou décroissant sans modifier le tableau original",
+    );
     console.log("aide() → Affiche ce menu d'aide");
 }
 
