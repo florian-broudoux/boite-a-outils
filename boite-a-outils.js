@@ -7,7 +7,7 @@ const ANNEE = "2026";
 
 /* Compteur de fonctions */
 
-let nombreFonctions = 15;
+let nombreFonctions = 22;
 
 // FONCTIONS
 /* V1
@@ -16,7 +16,7 @@ function convertirCelsiusEnFahrenheit(celsius) {
 }
 */
 
-const convertirCelsiusEnFahrenheit = celsius => celsius * 9/5 + 32;
+const convertirCelsiusEnFahrenheit = (celsius) => (celsius * 9) / 5 + 32;
 
 /* V1
 function convertirFahrenheitEnCelsius(fahrenheit) {
@@ -24,7 +24,8 @@ function convertirFahrenheitEnCelsius(fahrenheit) {
 }
 */
 
-const convertirFahrenheitEnCelsius = fahrenheit => (fahrenheit - 32) * 5/9; 
+const convertirFahrenheitEnCelsius = (fahrenheit) =>
+    ((fahrenheit - 32) * 5) / 9;
 
 /* V1
 function verifierParite(nombre) {
@@ -35,7 +36,7 @@ function verifierParite(nombre) {
     }
 }
 */
-const estPair = n => n % 2 === 0;
+const estPair = (n) => n % 2 === 0;
 
 function genererTableMultiplication(nombre) {
     console.log(`=== Table de ${nombre} ===`);
@@ -58,6 +59,7 @@ function jouerFizzBuzz(limite) {
     }
 }
 
+/* V1
 function calculerMoyenne(notes) {
     let somme = 0;
     for (let i = 0; i < notes.length; i++) {
@@ -65,7 +67,18 @@ function calculerMoyenne(notes) {
     }
     return somme / notes.length;
 }
+*/
 
+// for ... of car pas d'index
+const calculerMoyenne = (notes) => {
+    let somme = 0;
+    for (const note of notes) {
+        somme += note;
+    }
+    return somme / notes.length;
+};
+
+/* V1
 function trouverMaximum(nombres) {
     let max = nombres[0];
     for (let i = 1; i < nombres.length; i++) {
@@ -75,6 +88,18 @@ function trouverMaximum(nombres) {
     }
     return max;
 }
+*/
+
+// for ... of car pas d'index
+const trouverMaximum = (nombres) => {
+    let max = nombres[0];
+    for (const nombre of nombres) {
+        if (nombre > max) {
+            max = nombre;
+        }
+    }
+    return max;
+};
 
 function trouverMinimum(nombres) {
     let min = nombres[0];
@@ -196,17 +221,67 @@ function lancerMenu() {
     } while (choix !== 0);
 }
 
-const valeurAbsolue = n => n < 0 ? -n : n;
+const valeurAbsolue = (n) => (n < 0 ? -n : n);
 
-const estNegatif = n => n < 0;
+const estNegatif = (n) => n < 0;
 
-const carre = n => n * n;
+const carre = (n) => n * n;
 
-const cube = n => n * n * n;
+const cube = (n) => n * n * n;
 
 const pourcentage = (partie, total) => (partie / total) * 100;
 
-const initialiser = prenom => prenom[0].toUpperCase();
+const initialiser = (prenom) => prenom[0].toUpperCase();
+
+/* V1
+function compterOccurrences(tableau, valeur) {
+  let compteur = 0;
+  for (let i = 0; i < tableau.length; i++) {
+    if (tableau[i] === valeur) {
+      compteur++;
+    }
+  }
+  return compteur;
+}
+*/
+
+// for...of car pas d'index
+const compterOccurrences = (tableau, valeur) => {
+    let compteur = 0;
+    for (const tab of tableau) {
+        if (tab === valeur) {
+            compteur++;
+        }
+    }
+    return compteur;
+};
+
+// Titre avec solution de la fiche
+const afficherTableauFormate = (tableau, titre) => {
+    const largeur = 22; // Largeur interieure de la boite
+    const bordureH = "─".repeat(largeur);
+
+    // Centrer le titre
+    const espaces = largeur - titre.length;
+    const gauche = Math.floor(espaces / 2);
+    const titreCentre =
+        " ".repeat(gauche) +
+        titre +
+        " ".repeat(largeur - gauche - titre.length);
+
+    console.log(`┌${bordureH}┐`);
+    console.log(`│${titreCentre}│`);
+    console.log(`├${bordureH}┤`);
+
+    // forEach car besoin de l'index
+    tableau.forEach((element, index) => {
+        const ligne = `${index + 1}. ${element}`;
+        console.log(`│ ${ligne.padEnd(largeur - 1)}│`);
+    });
+
+    console.log(`└${bordureH}┘`);
+    console.log(`(${tableau.length} elements)`);
+};
 
 function aide() {
     console.log(
@@ -253,7 +328,15 @@ function aide() {
     console.log("carre(n) → Calcule le carré d'un nombre");
     console.log("cube(n) → Calcule le cube d'un nombre");
     console.log("pourcentage(partie, total) → Calcule un pourcentage");
-    console.log("initialiser(prenom) → Renvoie la première lettre en majuscule");
+    console.log(
+        "initialiser(prenom) → Renvoie la première lettre en majuscule",
+    );
+    console.log(
+        "compterOccurrences(tableau, valeur) → Compte le nombre de fois qu'une valeur est dans un tableau",
+    );
+    console.log(
+        "afficherTableauFormate(tableau, titre) → Affiche un tableau des éléments avec un titre",
+    );
     console.log("aide() → Affiche ce menu d'aide");
 }
 
