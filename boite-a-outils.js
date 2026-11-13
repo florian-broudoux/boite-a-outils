@@ -7,7 +7,7 @@ const ANNEE = "2026";
 
 /* Compteur de fonctions */
 
-let nombreFonctions = 22;
+let nombreFonctions = 28;
 
 // FONCTIONS
 /* V1
@@ -283,6 +283,27 @@ const afficherTableauFormate = (tableau, titre) => {
     console.log(`(${tableau.length} elements)`);
 };
 
+// Double les valeurs du tableau dans un nouveau tableau
+const doublerValeurs = (tableau) => tableau.map((n) => n * 2);
+
+// Extraire le nom et prénom d'une personne
+const extraireNoms = (personnes) =>
+    personnes.map((p) => `${p.prenom} ${p.nom}`);
+
+// Formate le prix à 2 chiffres après la virgule
+const formaterPrix = (tableau) => tableau.map((p) => `${p.toFixed(2)} EUR`);
+
+// Garder les nombres positifs
+const garderPositifs = (tableau) => tableau.filter((n) => n > 0);
+
+// Filtre par critère
+const filtrerParCritere = (personnes, ageMinimum) =>
+    personnes.filter((p) => p.age >= ageMinimum);
+
+// Obtenir les prénoms des majeurs
+const nomsDesMajeurs = (personnes) =>
+    personnes.filter((p) => p.age >= 18).map((p) => p.prenom);
+
 function aide() {
     console.log(
         `=== ${NOM_OUTIL} v${VERSION} — ${nombreFonctions} fonctions ===`,
@@ -337,6 +358,16 @@ function aide() {
     console.log(
         "afficherTableauFormate(tableau, titre) → Affiche un tableau des éléments avec un titre",
     );
+    console.log("doublerValeurs(tableau) → Double les nombres d'un tableau");
+    console.log("extraireNoms(personnes) → Extrait les noms et prénoms");
+    console.log("formaterPrix(tableau) → Formate les prix à 2 décimales");
+    console.log(
+        "garderPositifs(tableau) → Garde uniquement les nombres positifs",
+    );
+    console.log(
+        "filtrerParCritere(personnes, ageMinimum) → Filtre selon l'âge minimum",
+    );
+    console.log("nomsDesMajeurs(personnes) → Récupère les prénoms des majeurs");
     console.log("aide() → Affiche ce menu d'aide");
 }
 
