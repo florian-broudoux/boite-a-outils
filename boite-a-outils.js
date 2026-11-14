@@ -7,7 +7,7 @@ const ANNEE = "2026";
 
 /* Compteur de fonctions */
 
-let nombreFonctions = 38;
+let nombreFonctions = 42;
 
 // FONCTIONS
 /* V1
@@ -376,6 +376,79 @@ const nettoyerTexte = (texte) => {
     return motsFiltres.join(" ");
 };
 
+// tableau d'objets
+const contacts = [
+    {
+        prenom: "Zinedine",
+        nom: "Zidane",
+        telephone: "0102030405",
+        email: "zizou@gmail.com",
+        ville: "Bordeaux",
+    },
+    {
+        prenom: "Ngolo",
+        nom: "Kante",
+        telephone: "0607080910",
+        email: "ngolongolo@gmail.com",
+        ville: "Paris",
+    },
+    {
+        prenom: "Olivier",
+        nom: "Giroud",
+        telephone: "0611121314",
+        email: "oliveeeee@gmail.com",
+        ville: "Lille",
+    },
+];
+
+const ajouterContact = (prenom, nom, telephone, email, ville) => {
+    const nouveauContact = {
+        prenom: prenom,
+        nom: nom,
+        telephone: telephone,
+        email: email,
+        ville: ville,
+    };
+    contacts.push(nouveauContact);
+    console.log("Le contact est ajoute au tableau");
+};
+
+function afficherContact() {
+    console.log(`=== CARNET DE CONTACTS (${contacts.length} contacts) ===`);
+    contacts.forEach((contact, index) => {
+        console.log(
+            `-> ${index + 1}. ${contact.prenom} ${contact.nom} - ${contact.ville} - ${contact.telephone} `,
+        );
+    });
+    console.log("============================");
+}
+
+const afficherDetailsContact = (index) => {
+    if (index < 0 || index >= contacts.length) {
+        console.log("Index invalide !");
+        return;
+    }
+    const contact = contacts[index];
+    console.log(`--- Fiche contact n°${index + 1} ---`);
+    console.log(`Prenom : ${contact.prenom}`);
+    console.log(`Nom : ${contact.nom}`);
+    console.log(`Telephone : ${contact.telephone}`);
+    console.log(`Email : ${contact.email}`);
+    console.log(`Ville : ${contact.ville}`);
+    console.log("--------------------------");
+};
+
+function compterContactsParVille(ville) {
+    let compteur = 0;
+    contacts.forEach((contact) => {
+        if (contact.ville === ville) {
+            compteur = compteur + 1;
+        }
+    });
+    console.log(`${compteur} contact(s) a ${ville}`);
+    return compteur;
+}
+
 function aide() {
     console.log(
         `=== ${NOM_OUTIL} v${VERSION} — ${nombreFonctions} fonctions ===`,
@@ -465,6 +538,16 @@ function aide() {
     console.log("inverserChaine(texte) → Inverse l'ordre des caractères");
     console.log(
         "nettoyerTexte(texte) → Nettoie un texte en supprimant les espaces superflus et en mettant tout en minuscules",
+    );
+    console.log(
+        "ajouterContact(prenom, nom, telephone, email, ville) → Ajoute un nouveau contact",
+    );
+    console.log("afficherContact() → Affiche tous les contacts");
+    console.log(
+        "afficherDetailsContact(index) → Affiche les détails d'un contact",
+    );
+    console.log(
+        "compterContactsParVille(ville) → Compte les contacts par ville",
     );
     console.log("aide() → Affiche ce menu d'aide");
 }
