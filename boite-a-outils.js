@@ -7,7 +7,7 @@ const ANNEE = "2026";
 
 /* Compteur de fonctions */
 
-let nombreFonctions = 34;
+let nombreFonctions = 38;
 
 // FONCTIONS
 /* V1
@@ -325,6 +325,57 @@ const trierNombres = (tableau, ordre) => {
     }
 };
 
+const compterMots = (texte) => {
+    const nettoye = texte.trim();
+    if (nettoye.length === 0) {
+        return 0;
+    }
+    const morceaux = nettoye.split(" ");
+    let compteur = 0;
+    for (let i = 0; i < morceaux.length; i++) {
+        if (morceaux[i] !== "") {
+            compteur++;
+        }
+    }
+    return compteur;
+};
+
+const capitaliserMots = (texte) => {
+    const mots = texte.split(" ");
+    const resultat = [];
+    for (let i = 0; i < mots.length; i++) {
+        const mot = mots[i];
+        if (mot.length === 0) {
+            resultat.push(mot);
+        } else {
+            const premiere = mot[0].toUpperCase();
+            const reste = mot.slice(1).toLowerCase();
+            resultat.push(premiere + reste);
+        }
+    }
+    return resultat.join(" ");
+};
+
+const inverserChaine = (texte) => {
+    const caracteres = texte.split("");
+    const inverse = [];
+    for (let i = caracteres.length - 1; i >= 0; i--) {
+        inverse.push(caracteres[i]);
+    }
+    return inverse.join("");
+};
+
+const nettoyerTexte = (texte) => {
+    const morceaux = texte.trim().toLowerCase().split(" ");
+    const motsFiltres = [];
+    for (let i = 0; i < morceaux.length; i++) {
+        if (morceaux[i] !== "") {
+            motsFiltres.push(morceaux[i]);
+        }
+    }
+    return motsFiltres.join(" ");
+};
+
 function aide() {
     console.log(
         `=== ${NOM_OUTIL} v${VERSION} — ${nombreFonctions} fonctions ===`,
@@ -406,6 +457,14 @@ function aide() {
     );
     console.log(
         "trierNombres(tableau, ordre) → Trie les nombres par ordre croissant ou décroissant sans modifier le tableau original",
+    );
+    console.log("compterMots(texte) → Compte le nombre de mots dans un texte");
+    console.log(
+        "capitaliserMots(texte) → Met la première lettre de chaque mot en majuscule",
+    );
+    console.log("inverserChaine(texte) → Inverse l'ordre des caractères");
+    console.log(
+        "nettoyerTexte(texte) → Nettoie un texte en supprimant les espaces superflus et en mettant tout en minuscules",
     );
     console.log("aide() → Affiche ce menu d'aide");
 }
