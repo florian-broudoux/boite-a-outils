@@ -7,7 +7,7 @@ const ANNEE = "2026";
 
 /* Compteur de fonctions */
 
-let nombreFonctions = 42;
+let nombreFonctions = 47;
 
 // FONCTIONS
 /* V1
@@ -447,6 +447,76 @@ function compterContactsParVille(ville) {
     });
     console.log(`${compteur} contact(s) a ${ville}`);
     return compteur;
+}
+
+function rechercherContact(contacts, nom) {
+    const trouve = contacts.find(
+        (c) => c.nom.toLowerCase() === nom.toLowerCase(),
+    );
+    if (trouve) {
+        console.log(
+            `Trouve : ${trouve.prenom} ${trouve.nom} — ${trouve.ville} (${trouve.age} ans)`,
+        );
+        return trouve;
+    } else {
+        console.log(`Aucun contact nomme "${nom}"`);
+        return undefined;
+    }
+}
+
+function filtrerParVille(contacts, ville) {
+    const filtre = contacts.filter(
+        (c) => c.ville.toLowerCase() === ville.toLowerCase(),
+    );
+    console.log(`${filtre.length} contact(s) a ${ville}`);
+    return filtre;
+}
+
+function trierParAge(contacts, ordre) {
+    if (ordre === "croissant") {
+        return [...contacts].sort((a, b) => a.age - b.age);
+    } else {
+        return [...contacts].sort((a, b) => b.age - a.age);
+    }
+}
+
+function afficherAnnuaire(contacts) {
+    const annuaire = [...contacts]
+        .sort((a, b) => a.nom.localeCompare(b.nom))
+        .map(
+            (c) =>
+                `${c.nom.toUpperCase()} ${c.prenom} - ${c.ville} (${c.age} ans)`,
+        );
+    for (const ligne of annuaire) {
+        console.log(ligne);
+    }
+    return annuaire;
+}
+
+function statistiquesContacts(contacts) {
+    const total = contacts.length;
+
+    let sommeAges = 0;
+    for (const c of contacts) {
+        sommeAges += c.age;
+    }
+    const ageMoyen = Math.round((sommeAges / total) * 10) / 10;
+
+    const villes = [...new Set(contacts.map((c) => c.ville))];
+
+    let villeMax = "";
+    let countMax = 0;
+    for (const ville of villes) {
+        const count = contacts.filter((c) => c.ville === ville).length;
+        if (count > countMax) {
+            countMax = count;
+            villeMax = ville;
+        }
+    }
+    console.log(`Total : ${total} contacts`);
+    console.log(`Age moyen : ${ageMoyen} ans`);
+    console.log(`Villes : ${villes.join(", ")}`);
+    console.log(`Ville principale : ${villeMax} (${countMax} contacts)`);
 }
 
 function aide() {
