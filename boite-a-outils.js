@@ -619,6 +619,21 @@ function aide() {
     console.log(
         "compterContactsParVille(ville) → Compte les contacts par ville",
     );
+    console.log(
+        "rechercherContact(contacts, nom) → Recherche un contact par son nom",
+    );
+    console.log(
+        "filtrerParVille(contacts, ville) → Filtre les contacts par ville",
+    );
+    console.log(
+        "trierParAge(contacts, ordre) → Trie les contacts par âge (croissant ou décroissant)",
+    );
+    console.log(
+        "afficherAnnuaire(contacts) → Affiche l'annuaire trié par ordre alphabétique",
+    );
+    console.log(
+        "statistiquesContacts(contacts) → Affiche les statistiques de l'annuaire",
+    );
     console.log("aide() → Affiche ce menu d'aide");
 }
 
