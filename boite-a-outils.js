@@ -7,7 +7,7 @@ const ANNEE = "2026";
 
 /* Compteur de fonctions */
 
-let nombreFonctions = 47;
+let nombreFonctions = 51;
 
 // FONCTIONS
 /* V1
@@ -413,7 +413,7 @@ const ajouterContact = (prenom, nom, telephone, email, ville) => {
     console.log("Le contact est ajoute au tableau");
 };
 
-function afficherContact() {
+function afficherContacts() {
     console.log(`=== CARNET DE CONTACTS (${contacts.length} contacts) ===`);
     contacts.forEach((contact, index) => {
         console.log(
@@ -519,6 +519,119 @@ function statistiquesContacts(contacts) {
     console.log(`Ville principale : ${villeMax} (${countMax} contacts)`);
 }
 
+/*
+  Pseudo-code : triBullesSimplifie(tableau)
+    Copier le tableau
+    REPETER (longueur - 1) fois
+      POUR i DE 0 A (longueur - 2 - tour)
+        SI copie[i] > copie[i+1] → ECHANGER
+      FIN POUR
+    FIN REPETER
+    RENVOYER copie
+ */
+function triBullesSimplifie(tableau) {
+    if (tableau.length <= 1) return [...tableau];
+
+    const copie = [...tableau];
+    for (let tour = 0; tour < copie.length - 1; tour++) {
+        for (let i = 0; i < copie.length - 1 - tour; i++) {
+            if (copie[i] > copie[i + 1]) {
+                const temp = copie[i];
+                copie[i] = copie[i + 1];
+                copie[i + 1] = temp;
+            }
+        }
+    }
+
+    return copie;
+}
+
+/*
+ Pseudo-code : motLePlusLong(phrase)
+    Nettoyer la phrase avec trim
+    Decouper en mots
+    candidat ← premier mot
+    POUR CHAQUE mot
+      SI mot.length > candidat.length → candidat ← mot
+    FIN POUR
+    RENVOYER candidat
+ */
+function motLePlusLong(phrase) {
+    const nettoye = phrase.trim();
+    if (nettoye === "") return undefined;
+
+    const mots = nettoye.split(" ").filter((mot) => mot !== "");
+    let plusLong = mots[0];
+
+    for (const mot of mots) {
+        if (mot.length > plusLong.length) {
+            plusLong = mot;
+        }
+    }
+
+    return plusLong;
+}
+
+/*
+  Pseudo-code : statistiquesCollection(collection, propriete)
+    SI collection vide → RENVOYER null
+    min ← premiere valeur
+    max ← premiere valeur
+    somme ← 0
+    POUR CHAQUE objet
+      valeur ← objet[propriete]
+      SI valeur < min → min ← valeur
+      SI valeur > max → max ← valeur
+      somme ← somme + valeur
+    FIN POUR
+    moyenne ← somme / nombre d'elements
+    RENVOYER { min, max, moyenne }
+ */
+function statistiquesCollection(collection, propriete) {
+    if (collection.length === 0) return null;
+
+    let min = collection[0][propriete];
+    let max = collection[0][propriete];
+    let somme = 0;
+
+    for (const objet of collection) {
+        const valeur = objet[propriete];
+        if (valeur < min) {
+            min = valeur;
+        }
+        if (valeur > max) {
+            max = valeur;
+        }
+        somme = somme + valeur;
+    }
+
+    const moyenne = Math.round((somme / collection.length) * 10) / 10;
+
+    return { min, max, moyenne };
+}
+
+/*
+  Pseudo-code : supprimerDoublons(tableau)
+    resultat ← tableau vide
+    POUR CHAQUE element
+      SI element N'EST PAS dans resultat
+        AJOUTER element a resultat
+      FIN SI
+    FIN POUR
+    RENVOYER resultat
+ */
+function supprimerDoublons(tableau) {
+    const resultat = [];
+
+    for (const element of tableau) {
+        if (!resultat.includes(element)) {
+            resultat.push(element);
+        }
+    }
+
+    return resultat;
+}
+
 function aide() {
     console.log(
         `=== ${NOM_OUTIL} v${VERSION} — ${nombreFonctions} fonctions ===`,
@@ -612,7 +725,7 @@ function aide() {
     console.log(
         "ajouterContact(prenom, nom, telephone, email, ville) → Ajoute un nouveau contact",
     );
-    console.log("afficherContact() → Affiche tous les contacts");
+    console.log("afficherContacts() → Affiche tous les contacts");
     console.log(
         "afficherDetailsContact(index) → Affiche les détails d'un contact",
     );
@@ -633,6 +746,18 @@ function aide() {
     );
     console.log(
         "statistiquesContacts(contacts) → Affiche les statistiques de l'annuaire",
+    );
+    console.log(
+        "triBullesSimplifie(tableau) → Trie un tableau par ordre croissant",
+    );
+    console.log(
+        "motLePlusLong(phrase) → Recherche le mot le plus long dans une phrase",
+    );
+    console.log(
+        "statistiquesCollection(collection, propriete) → Calcule le minimum, le maximum et la moyenne d'une collection",
+    );
+    console.log(
+        "supprimerDoublons(tableau) → Supprime les éléments en double d'un tableau",
     );
     console.log("aide() → Affiche ce menu d'aide");
 }
